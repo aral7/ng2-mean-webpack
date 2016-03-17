@@ -34,7 +34,8 @@ module.exports = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
-    'app': './src/main.ts'
+    'app': './src/main.ts',
+    'bootstrap': 'bootstrap-loader'
   },
 
   resolve: {
@@ -79,7 +80,24 @@ module.exports = {
         test: /\.scss$/,
         loader: 'style!css!autoprefixer-loader?browsers=last 2 versions!sass',
         exclude: [ helpers.root('node_modules') ]
-      }
+      },
+
+      {
+        test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: "url?limit=10000"
+      },
+      {
+        test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+        loader: 'file'
+      },
+
+      // Use one of these to serve jQuery for Bootstrap scripts:
+
+      // Bootstrap 4
+      { test: /bootstrap\/dist\/js\/umd\//, loader: 'imports?jQuery=jquery' },
+
+      // Bootstrap 3
+      { test: /bootstrap-sass\/assets\/javascripts\//, loader: 'imports?jQuery=jquery' }
 
       // if you add a loader include the resolve file extension above
     ]
@@ -115,7 +133,7 @@ module.exports = {
   tslint: {
     emitErrors: false,
     failOnHint: false,
-    resourcePath: 'src',
+    resourcePath: 'src'
   },
 
   devServer: {
@@ -124,7 +142,7 @@ module.exports = {
       '*': {
         target: 'http://localhost:' + config.PORT,
         secure: false
-      },
+      }
     },
     port: metadata.port,
     host: metadata.host,
