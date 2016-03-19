@@ -2,3 +2,14 @@
 // When having several themes, this file contains everything related to the
 // default one.
 // -----------------------------------------------------------------------------
+
+$main-gradient: linear-gradient(135deg, #0e354b, #4e988f);
+$reverse-main-gradient: linear-gradient(135deg, #4e988f, #0e354b);
+
+body {
+  background: $main-gradient;
+}
+
+.panel-heading {
+  background: $reverse-main-gradient;
+}

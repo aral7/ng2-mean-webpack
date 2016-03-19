@@ -12,9 +12,9 @@ var HMR = helpers.hasProcessFlag('hot');
 var config = require('./config/config.json');
 
 var metadata = {
-  title: 'Angular 2 MEAN Webpack Starter Kit by @datatype_void',
+  title: 'Angular 2 by Aral',
   baseUrl: '/',
-  host: '0.0.0.0',
+  host: 'localhost',
   port: 8080,
   ENV: ENV,
   HMR: HMR
@@ -123,6 +123,10 @@ module.exports = {
     new webpack.DefinePlugin({
       'ENV': JSON.stringify(metadata.ENV),
       'HMR': HMR
+    }),
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery"
     })
   ],
 

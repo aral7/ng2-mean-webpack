@@ -42,7 +42,7 @@ import {Recipes} from './recipes/recipes.component';
   template: `
     <header>
       <nav>
-        <h1>Hello {{ name }}</h1>
+        <h1>Hello {{ name }}, Aral welcomes You!</h1>
         <ul>
           <li router-active>
             <a [routerLink]=" ['Index'] ">Index</a>
